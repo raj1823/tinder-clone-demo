@@ -58,23 +58,23 @@ const InfoText = styled.Text`
 const db = [
   {
     name: 'Richard Hendricks',
-    img: require('../../assets/img/richard.jpg')
+    img: require('../../assets1/img/richard.jpg')
   },
   {
     name: 'Erlich Bachman',
-    img: require('../../assets/img/erlich.jpg')
+    img: require('../../assets1/img/erlich.jpg')
   },
   {
     name: 'Monica Hall',
-    img: require('../../assets/img/monica.jpg')
+    img: require('../../assets1/img/monica.jpg')
   },
   {
     name: 'Jared Dunn',
-    img: require('../../assets/img/jared.jpg')
+    img: require('../../assets1/img/jared.jpg')
   },
   {
     name: 'Dinesh Chugtai',
-    img: require('../../assets/img/dinesh.jpg')
+    img: require('../../assets1/img/dinesh.jpg')
   }
 ]
 
