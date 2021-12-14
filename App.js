@@ -117,8 +117,12 @@ export default class App extends React.Component {
             ]}>
             <Animated.View
               style={{
-                opacity: this.likeOpacity,
-                transform: [{rotate: '-30deg'}],
+                opacity: 1,
+                transform: [{rotate: this.position.x.interpolate({
+                    inputRange:[-SCREEN_WIDTH/4, 0 , SCREEN_WIDTH/4],
+                    outputRange:['-180deg','0deg','180deg'],
+                    extrapolate:'clamp'
+                })}],
                 position: 'absolute',
                 top: 50,
                 left: 40,
