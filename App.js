@@ -25,6 +25,9 @@ export default class App extends React.Component {
     super(props);
 
     this.position = new Animated.ValueXY();
+    this.fadingValue = new Animated.Value(0)
+    this.fontValue= new Animated.Value(10)
+    this.rotationValue = new Animated.Value(0)
     this.state = {
       currentIndex: 0,
     };
@@ -64,6 +67,10 @@ export default class App extends React.Component {
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: ['-20deg', '0deg', '10deg'],
     });
+    this.rotateElement =  this.rotationValue.interpolate({
+      inputRange: [0,1],
+      outputRange: ['0deg','7200deg']
+    })
 
     this.rotateAndTranslate = {
       transform: [
@@ -96,6 +103,24 @@ export default class App extends React.Component {
       extrapolate: 'clamp',
     });
   }
+
+  componentDidMount(){
+
+    Animated.timing(this.fadingValue,{
+      toValue:1,
+      duration:5000
+    }).start()
+    Animated.timing(this.fontValue,{
+      toValue: 80,
+      duration:5000
+    }).start()
+    Animated.timing(this.rotationValue,{
+      toValue:1,
+      duration:5000
+    }).start()
+  }
+
+
 
   renderUsers = () => {
     return Users.map((item, i) => {
@@ -250,10 +275,28 @@ export default class App extends React.Component {
     }).reverse();
   };
 
+
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center'}}>
-        {this.renderUsers()}
+      <View style={{flex: 1, alignItems: 'center',justifyContent:'center'}}>
+        {/* {this.renderUsers()} */}
+       <Animated.View
+        {...this.PanResponder.panHandlers}
+
+         style={[{
+           opacity:this.fadingValue,
+          //  height:100,
+          //  width:100,
+          //  backgroundColor:'red'
+         },{transform:[
+           {
+             rotate: this.rotateElement
+           }
+         ]}]}
+       >
+
+        <Animated.Text style={{fontSize:this.fontValue, fontWeight:'600'}}>Raj</Animated.Text>
+        </Animated.View>
       </View>
     );
   }
