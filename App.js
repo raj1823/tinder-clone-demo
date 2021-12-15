@@ -34,15 +34,20 @@ export default class App extends React.Component {
       toValue: 80,
       duration: 5000,
     }).start();
-    Animated.timing(this.rotationValue, {
-      toValue: 1,
-      duration: 5000,
-    }).start();
+    Animated.timing(this.rotationValue,{
+      toValue:1,
+      duration: 5000
+    }).start()
+    // Animated.loop(
+    // Animated.timing(this.rotationValue, {
+    //   toValue: 1,
+    //   duration: 500,
+    // })).start()
   }
 
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor:'powderblue'}}>
         <Animated.View
           style={[
             {
@@ -52,12 +57,13 @@ export default class App extends React.Component {
               transform: [
                 {
                   rotate: this.rotateElement,
+                  // translateX:{}
                 },
               ],
             },
           ]}>
-          <Animated.Text style={{fontSize: this.fontValue, fontWeight: '600'}}>
-            Raj
+          <Animated.Text style={{fontSize: this.fontValue, fontWeight: '600',color:'red'}}>
+            {'TASK1'}
           </Animated.Text>
         </Animated.View>
       </View>
